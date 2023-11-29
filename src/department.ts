@@ -12,6 +12,10 @@ export class Department {
   );
   static readonly NONE = new Department("None", null);
 
+  static getAllDepartments(): Department[] {
+    return [this.COMPUTER_SCIENCE, this.BIOLOGY, this.ART_HISTORY, this.NONE];
+  }
+
   private constructor(
     private readonly key: string,
     public readonly discount: any
