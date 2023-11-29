@@ -14,9 +14,9 @@ export class Inventory {
   public getByDescendingTitle(): Array<Book> {
     const inventory = this.books;
 
-    const sorted = inventory
-      .sort((a, b) => a.getTitle().localeCompare(b.getTitle()))
-      .reverse();
+    const sorted = inventory.sort((a, b) =>
+      b.getTitle().localeCompare(a.getTitle())
+    );
 
     return sorted;
   }

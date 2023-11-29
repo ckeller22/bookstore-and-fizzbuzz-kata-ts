@@ -21,24 +21,24 @@ describe("Inventory", () => {
   });
 
   it("should be able to sort books by title descending", () => {
-    const bookOne = new Book("a", 10.0);
-    const bookTwo = new Book("b", 12);
-    const bookThree = new Book("c", 12);
+    const inventory = generateRandomInventory(10);
 
-    const inventory = new Inventory([bookThree, bookOne, bookTwo]);
+    const clonedBooks = [...inventory.getBooks()];
+    const expected = clonedBooks.sort((a, b) =>
+      b.getTitle().localeCompare(a.getTitle())
+    );
 
-    const expected = [bookThree, bookTwo, bookOne];
     expect(inventory.getByDescendingTitle()).toEqual(expected);
   });
 
   it("should be able to sort books by title ascending", () => {
-    const bookOne = new Book("a", 10.0);
-    const bookTwo = new Book("b", 12);
-    const bookThree = new Book("c", 12);
+    const inventory = generateRandomInventory(10);
 
-    const inventory = new Inventory([bookThree, bookOne, bookTwo]);
+    const clonedBooks = [...inventory.getBooks()];
+    const expected = clonedBooks.sort((a, b) =>
+      a.getTitle().localeCompare(b.getTitle())
+    );
 
-    const expected = [bookOne, bookTwo, bookThree];
     expect(inventory.getByAscendingTitle()).toEqual(expected);
   });
 });
