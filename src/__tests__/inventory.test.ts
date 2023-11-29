@@ -1,14 +1,23 @@
 import { Book } from "../book";
 import { Inventory } from "../inventory";
 
+// Helpers
+const generateRandomInventory = (length: number) => {
+  // Generate 10 books with random titles and prices, starting with 'a
+  const books = Array.from(
+    { length },
+    (_, i) => new Book(String.fromCharCode(97 + i), Math.random() * 100)
+  );
+
+  // Create new inventory with books in random order.
+  return new Inventory(books.sort(() => Math.random() - 0.5));
+};
+
 describe("Inventory", () => {
   it("should have a list of books", () => {
-    const bookOne = new Book("The Hobbit", 10.0);
-    const bookTwo = new Book("Some name", 12);
+    const inventory = generateRandomInventory(10);
 
-    const inventory = new Inventory([bookOne, bookTwo]);
-
-    expect(inventory.getBooks().length).toBe(2);
+    expect(inventory.getBooks().length).toBe(10);
   });
 
   it("should be able to sort books by title descending", () => {
@@ -29,7 +38,7 @@ describe("Inventory", () => {
 
     const inventory = new Inventory([bookThree, bookOne, bookTwo]);
 
-    const expected = [bookTwo, bookThree, bookOne];
+    const expected = [bookOne, bookTwo, bookThree];
     expect(inventory.getByAscendingTitle()).toEqual(expected);
-  }
+  });
 });

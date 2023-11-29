@@ -26,4 +26,20 @@ export class Inventory {
 
     return sorted;
   }
+
+  public getByAscendingTitle(): Array<Book> {
+    const inventory = this.books;
+
+    const sorted = inventory.sort(function (a, b) {
+      if (a.getTitle() < b.getTitle()) {
+        return -1;
+      }
+      if (b.getTitle() > a.getTitle()) {
+        return 1;
+      }
+      return 0;
+    });
+
+    return sorted;
+  }
 }
