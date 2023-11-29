@@ -10,7 +10,7 @@ export class Department {
     "Art History",
     this.DEPARTMENT_DISCOUNT
   );
-  static readonly NONE = new Department("None", 100);
+  static readonly NONE = new Department("None", null);
 
   private constructor(
     private readonly key: string,

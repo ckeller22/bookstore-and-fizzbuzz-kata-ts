@@ -28,6 +28,10 @@ export class Book {
   }
 
   public getDepartmentPrice(): number {
+    if (this.department === Department.NONE) {
+      return this.price;
+    }
+
     return this.price * (this.department.discount / 100);
   }
 
