@@ -38,4 +38,12 @@ export class Inventory {
 
     return sorted;
   }
+
+  getByAscendingPrice(): any {
+    const inventory = this.books;
+
+    const sorted = inventory.sort((a, b) => a.getPrice() - b.getPrice());
+
+    return sorted;
+  }
 }
