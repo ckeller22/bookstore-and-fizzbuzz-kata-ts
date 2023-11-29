@@ -1,17 +1,23 @@
 import { Department } from "./department";
 
 export class Book {
-  protected static USED_PRICE_MULTIPLIER = 0.6;
+  public static USED_PRICE_MULTIPLIER = 0.6;
 
   private title: string;
   private price: number;
   private department: Department;
   private usedPrice: number;
+  private departmentDiscountPrice: number;
+  private usedDepartmentDiscountPrice: number;
 
   public constructor(title: string, price: number, department: Department) {
     this.title = title;
     this.price = price;
     this.usedPrice = price * Book.USED_PRICE_MULTIPLIER;
+    this.departmentDiscountPrice =
+      this.price - this.price * department.discount;
+    this.usedDepartmentDiscountPrice =
+      this.usedPrice - this.usedPrice * department.discount;
     this.department = department;
   }
 
@@ -27,12 +33,12 @@ export class Book {
     return this.usedPrice;
   }
 
-  public getDepartmentPrice(): number {
-    if (this.department === Department.NONE) {
-      return this.price;
-    }
+  public getUsedDepartmentPrice(): number {
+    return this.usedDepartmentDiscountPrice;
+  }
 
-    return this.price * (this.department.discount / 100);
+  public getDepartmentPrice(): number {
+    return this.departmentDiscountPrice;
   }
 
   public getDepartment(): Department {
