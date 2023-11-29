@@ -1,3 +1,4 @@
+import { Department } from "../department";
 import { Book } from "../book";
 import { Inventory } from "../inventory";
 
@@ -6,7 +7,12 @@ const generateRandomInventory = (length: number) => {
   // Generate 10 books with random titles and prices, starting with 'a
   const books = Array.from(
     { length },
-    (_, i) => new Book(String.fromCharCode(97 + i), Math.random() * 100)
+    (_, i) =>
+      new Book(
+        String.fromCharCode(97 + i),
+        Math.random() * 100,
+        Department.NONE
+      )
   );
 
   // Create new inventory with books in random order.
