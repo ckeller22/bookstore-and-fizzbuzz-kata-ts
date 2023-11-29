@@ -14,15 +14,9 @@ export class Inventory {
   public getByDescendingTitle(): Array<Book> {
     const inventory = this.books;
 
-    const sorted = inventory.sort(function (a, b) {
-      if (a.getTitle() > b.getTitle()) {
-        return -1;
-      }
-      if (b.getTitle() < a.getTitle()) {
-        return 1;
-      }
-      return 0;
-    });
+    const sorted = inventory
+      .sort((a, b) => a.getTitle().localeCompare(b.getTitle()))
+      .reverse();
 
     return sorted;
   }
@@ -30,15 +24,9 @@ export class Inventory {
   public getByAscendingTitle(): Array<Book> {
     const inventory = this.books;
 
-    const sorted = inventory.sort(function (a, b) {
-      if (a.getTitle() < b.getTitle()) {
-        return -1;
-      }
-      if (b.getTitle() > a.getTitle()) {
-        return 1;
-      }
-      return 0;
-    });
+    const sorted = inventory.sort((a, b) =>
+      a.getTitle().localeCompare(b.getTitle())
+    );
 
     return sorted;
   }
