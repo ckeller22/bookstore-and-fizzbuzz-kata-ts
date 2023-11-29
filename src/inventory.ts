@@ -11,6 +11,10 @@ export class Inventory {
     return this.books;
   }
 
+  printBooks() {
+    this.books.forEach((book) => console.log(book.toString()));
+  }
+
   public getByDescendingTitle(): Array<Book> {
     const inventory = this.books;
 

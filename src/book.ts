@@ -44,4 +44,21 @@ export class Book {
   public getDepartment(): Department {
     return this.department;
   }
+
+  public toString(): string {
+    const priceWithDepartmentDiscount =
+      this.price - this.price * this.department.discount;
+    const usedPriceWithDepartmentDiscount =
+      this.usedPrice - this.usedPrice * this.department.discount;
+
+    return `Title: ${this.title}, Price: ${this.price.toFixed(
+      2
+    )}, Used Price: ${this.usedPrice.toFixed(2)}, Department: ${
+      this.department
+    }, Department Discount Price: ${priceWithDepartmentDiscount.toFixed(
+      2
+    )}, Used Department Discount Price: ${usedPriceWithDepartmentDiscount.toFixed(
+      2
+    )}`;
+  }
 }
