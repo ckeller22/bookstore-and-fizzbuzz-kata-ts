@@ -24,11 +24,6 @@ export class Inventory {
       return 0;
     });
 
-    console.log(
-      "🚀 ~ file: inventory.ts:26 ~ Inventory ~ sorted ~ sorted:",
-      sorted
-    );
-
     return sorted;
   }
 }
