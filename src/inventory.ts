@@ -30,4 +30,12 @@ export class Inventory {
 
     return sorted;
   }
+
+  public getByDescendingPrice(): Array<Book> {
+    const inventory = this.books;
+
+    const sorted = inventory.sort((a, b) => b.getPrice() - a.getPrice());
+
+    return sorted;
+  }
 }

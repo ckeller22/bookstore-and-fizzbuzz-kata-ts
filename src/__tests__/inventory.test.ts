@@ -41,4 +41,13 @@ describe("Inventory", () => {
 
     expect(inventory.getByAscendingTitle()).toEqual(expected);
   });
+
+  it("should be able to sort books by price descending", () => {
+    const inventory = generateRandomInventory(10);
+
+    const clonedBooks = [...inventory.getBooks()];
+    const expected = clonedBooks.sort((a, b) => b.getPrice() - a.getPrice());
+
+    expect(inventory.getByDescendingPrice()).toEqual(expected);
+  });
 });
